@@ -22,26 +22,26 @@ shape::shape() :
 name_("shape"),
 color_(color(0,0,0))
 {
-	cout << "shape c'tor" << endl;
+	// cout << "shape c'tor" << endl;
 }
 
 shape::shape(string const& name, color const& clr) :
 name_(name),
 color_(clr)
 {
-	cout << "shape c'tor" << endl;
+	// cout << "shape c'tor" << endl;
 }
 
 shape::shape(shape const& other) :
 name_(other.name()),
 color_(other.Color())
 {
-	cout << "shape c'tor" << endl;
+	// cout << "shape c'tor" << endl;
 }
 
 /* virtual */ shape::~shape()
 {
-	cout << "shape d'tor" << endl;
+	// cout << "shape d'tor" << endl;
 }
 
 // getters

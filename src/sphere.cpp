@@ -23,7 +23,7 @@ shape("sphere", color(0,0,0)),
 center_(point3d(0,0,0)),
 radius_(1)
 {
-	cout << "sphere def c'tor" << endl;
+	// cout << "sphere def c'tor" << endl;
 }
 
 sphere::sphere(point3d const& ctr, double r) :
@@ -31,7 +31,7 @@ shape("sphere", color(0,0,0)),
 center_(ctr),
 radius_(r)
 {
-	cout << "sphere c'tor" << endl;
+	// cout << "sphere c'tor" << endl;
 }
 
 sphere::sphere(point3d const& ctr, double r, string const& name,
@@ -40,7 +40,7 @@ shape(name, clr),
 center_(ctr),
 radius_(r)
 {
-	cout << "sphere c'tor" << endl;
+	// cout << "sphere c'tor" << endl;
 }
 
 sphere::sphere(sphere const& other) :
@@ -48,12 +48,12 @@ shape(other.name(), other.Color()),
 center_(other.center()),
 radius_(other.radius())
 {
-	cout << "sphere copy c'tor" << endl;
+	// cout << "sphere copy c'tor" << endl;
 }
 
 /* virtual */ sphere::~sphere()
 {
-	cout << "sphere de'tor" << endl;
+	// cout << "sphere de'tor" << endl;
 }
 
 // getters

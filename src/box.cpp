@@ -26,7 +26,7 @@ length_(1),
 width_(1),
 height_(2)
 {
-	cout << "box def c'tor" << endl;
+	// cout << "box def c'tor" << endl;
 }
 
 box::box(point3d const& crn, double l, double w, double h) :
@@ -36,7 +36,7 @@ length_(l),
 width_(w),
 height_(h)
 {
-	cout << "box c'tor" << endl;
+	// cout << "box c'tor" << endl;
 }
 
 box::box(point3d const& crn, double l, double w, double h,
@@ -47,7 +47,7 @@ length_(l),
 width_(w),
 height_(h)
 {
-	cout << "box c'tor" << endl;
+	// cout << "box c'tor" << endl;
 }
 
 box::box(box const& other) :
@@ -57,12 +57,12 @@ length_(other.length()),
 width_(other.width()),
 height_(other.height())
 {
-	cout << "box copy c'tor" << endl;
+	// cout << "box copy c'tor" << endl;
 }
 
 /* virtual */ box::~box()  // dec'tor
 {
-	cout << "box d'tor" << endl;
+	// cout << "box d'tor" << endl;
 }
 
 // getters
