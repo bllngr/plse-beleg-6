@@ -27,7 +27,7 @@ public:
 	void remove(shape*);
 	shape* find(std::string const&) const;
 	int size() const;
-	void items() const;
+	void print() const;
 	double volume() const;
 private:
 	std::list<shape*> shapes_;

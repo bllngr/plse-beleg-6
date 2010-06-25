@@ -65,7 +65,7 @@ int shape_container::size() const
 	return shapes_.size();
 }
 
-void shape_container::items() const
+void shape_container::print() const
 {
 	// for (list<shape*>::const_iterator it = shapes_.begin(); it != shapes_.end(); ++it)
 	// {
