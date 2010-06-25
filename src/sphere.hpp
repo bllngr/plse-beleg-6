@@ -37,8 +37,8 @@ public:
 	/* virtual */ bool is_inside(point3d const&) const;
 	/* virtual */ void printOn(std::ostream&) const;
 private:
-	double radius_;
 	point3d center_;
+	double radius_;
 };
 
 // ostream operator (external declaration)
