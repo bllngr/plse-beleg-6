@@ -46,7 +46,29 @@ A61_OUTPUT =$(BIN_PATH)/aufgabe6.1
 
 aufgabe6.1: $(OBJECT) $(A61_OBJECT)
 	$(CXX) $(OBJECT) $(A61_OBJECT) $(LIB) $(LIB_PATH) -o $(A61_OUTPUT)
-	$(MAIN_OUTPUT)
+	$(A61_OUTPUT)
+
+# aufgabe6.1
+A62_SOURCE =\
+	$(SRC_PATH)/aufgabe6.2.cpp \
+	$(NULL)
+
+A62_OBJECT =$(A62_SOURCE:$(SRC_PATH)%.cpp=$(OBJ_PATH)%.o)
+
+A62_OUTPUT =$(BIN_PATH)/aufgabe6.2
+
+aufgabe6.2: $(OBJECT) $(A62_OBJECT)
+	$(CXX) $(OBJECT) $(A62_OBJECT) $(LIB) $(LIB_PATH) -o $(A62_OUTPUT)
+	$(A62_OUTPUT)
+
+# test
+TEST_SOURCE =\
+	$(SRC_PATH)/test/test.cpp \
+	$(SRC_PATH)/test/test_point.cpp \
+	$(SRC_PATH)/test/test_vector.cpp \
+	$(SRC_PATH)/test/test_ray.cpp \
+	$(SRC_PATH)/test/test_matrix.cpp \
+	$(NULL)
 
 # test
 TEST_SOURCE =\
