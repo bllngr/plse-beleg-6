@@ -92,7 +92,7 @@ build: test main
 cleanbuild: realclean build
 
 # routines for building objects
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
+%.o: $(SRC_PATH)/%.cpp
 	$(CXX) $(CXX_FLAGS) $(INCLUDE) -c $< -o $@
 
 # clean routines
