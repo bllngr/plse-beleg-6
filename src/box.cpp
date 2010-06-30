@@ -118,6 +118,12 @@ point3d box::corner() const
 		height_ << ")";
 }
 
+/* virtual */ box* box::clone() const
+{
+	box* cloned = new box(*this);
+	return cloned;
+}
+
 // ostream operator (external definition)
 std::ostream& operator<<(std::ostream& os, box const& b)
 {

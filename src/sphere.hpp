@@ -36,6 +36,8 @@ public:
 	/* virtual */ double surface() const;
 	/* virtual */ bool is_inside(point3d const&) const;
 	/* virtual */ void printOn(std::ostream&) const;
+	/* virtual */ sphere* clone() const;
+
 private:
 	point3d center_;
 	double radius_;

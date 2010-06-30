@@ -20,21 +20,24 @@ using namespace std;
 // constructors and destructors
 shape::shape() :
 name_("shape"),
-color_(color(0,0,0))
+color_(color(0,0,0)),
+refCounter_(0)
 {
 	// cout << "shape c'tor" << endl;
 }
 
 shape::shape(string const& name, color const& clr) :
 name_(name),
-color_(clr)
+color_(clr),
+refCounter_(0)
 {
 	// cout << "shape c'tor" << endl;
 }
 
 shape::shape(shape const& other) :
 name_(other.name()),
-color_(other.Color())
+color_(other.Color()),
+refCounter_(0)
 {
 	// cout << "shape c'tor" << endl;
 }
@@ -59,6 +62,16 @@ color const& shape::Color () const
 /* virtual */ void shape::printOn(std::ostream& os) const
 {
 	os << typeid(*this).name() << "(\"" << name_ << "\", " << color_ << ", ";
+}
+
+void shape::ref()
+{
+	++refCounter_;
+}
+
+void shape::unref()
+{
+	--refCounter_;
 }
 
 // ostream operator (external definition)

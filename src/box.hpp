@@ -39,6 +39,7 @@ public:
 	/* virtual */ double surface() const;
 	/* virtual */ bool is_inside(point3d const&) const;
 	/* virtual */ void printOn(std::ostream&) const;
+	/* virtual */ box* clone() const;
 
 private:
 	point3d corner_;

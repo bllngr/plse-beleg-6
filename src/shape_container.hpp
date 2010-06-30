@@ -23,12 +23,17 @@ public:
 	shape_container(shape_container const&);
 	~shape_container();
 
+	shape_container& operator==(shape_container const& other);
+	
+	shape_container clone_deep() const;
+	shape_container clone_shallow() const;
 	void add(shape*);
 	void remove(shape*);
 	shape* find(std::string const&) const;
 	int size() const;
 	void print() const;
 	double volume() const;
+
 private:
 	std::list<shape*> shapes_;
 };

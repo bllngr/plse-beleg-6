@@ -35,11 +35,15 @@ public:
 	virtual double volume() const = 0;
 	virtual double surface() const = 0;
 	virtual bool is_inside(point3d const& point) const = 0;
-	/*virtual*/ void printOn(std::ostream& os) const;
+	virtual shape* clone() const = 0;
+	/* virtual */ void printOn(std::ostream& os) const;
+	void ref();
+	void unref();
 
 private:
 	std::string name_;
 	color color_;
+	int refCounter_;
 };
 
 // ostream operator (external declaration)

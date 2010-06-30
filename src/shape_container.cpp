@@ -37,14 +37,41 @@ shapes_()
 shape_container::~shape_container()
 {}
 
+shape_container& shape_container::operator==(shape_container const& other)
+{
+	// for_each in this: unref
+	// copy
+	// for_each on other: ref
+}
+
+shape_container shape_container::clone_deep() const
+{
+	shape_container cloned;
+
+	for (list<shape*>::const_iterator it = shapes_.begin(); it != shapes_.end();
+		++it)
+	{
+		cloned.add((*it)->clone());
+	}
+
+	return cloned;
+}
+
+shape_container shape_container::clone_shallow() const
+{
+	return shape_container(*this);
+}
+
 void shape_container::add(shape* shapePtr)
 {
 	shapes_.push_back(shapePtr);
+	shapePtr->ref();
 }
 
 void shape_container::remove(shape* shapePtr)
 {
 	shapes_.remove(shapePtr);
+	shapePtr->unref();
 }
 
 shape* shape_container::find(string const& name) const

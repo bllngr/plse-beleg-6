@@ -89,6 +89,12 @@ point3d sphere::center() const
 	os << ", " << center_ << ", " << radius_ << ")";
 }
 
+/* virtual */ sphere* sphere::clone() const
+{
+	sphere* cloned = new sphere(*this);
+	return cloned;
+}
+
 // ostream operator (external definition)
 std::ostream& operator<<(std::ostream& os, sphere const& sphr)
 {
