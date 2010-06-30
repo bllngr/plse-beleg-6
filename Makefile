@@ -93,7 +93,7 @@ cleanbuild: realclean build
 
 # routines for building objects
 %.o: $(SRC_PATH)/%.cpp
-	$(CXX) $(CXX_FLAGS) $(INCLUDE) -c $< -o $@
+	$(CXX) $(CXX_FLAGS) $(INCLUDE) -c $< -o $(OBJ_PATH)/$@
 
 # clean routines
 .PHONY: clean
