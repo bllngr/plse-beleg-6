@@ -39,9 +39,10 @@ shape_container::~shape_container()
 
 shape_container& shape_container::operator==(shape_container const& other)
 {
-	// for_each in this: unref
-	// copy
-	// for_each on other: ref
+	for_each(shapes_.begin(), shapes_.end(), mem_fun(&shape::unref));
+	shapes_ = other.shapes_;
+	for_each(shapes_.begin(), shapes_.end(), mem_fun(&shape::ref));
+	return *this;
 }
 
 shape_container shape_container::clone_deep() const
