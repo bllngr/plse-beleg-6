@@ -73,8 +73,11 @@ void shape_container::add(shape* shapePtr)
 
 void shape_container::remove(shape* shapePtr)
 {
-	shapes_.remove(shapePtr);
-	shapePtr->unref();
+	if (shapePtr != 0 && shapePtr != NULL)
+	{
+		shapes_.remove(shapePtr);
+		shapePtr->unref();
+	}
 }
 
 shape* shape_container::find(string const& name) const
