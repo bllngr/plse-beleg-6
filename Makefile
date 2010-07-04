@@ -1,5 +1,5 @@
 # default target
-default: build
+default: all
 
 # global variables
 INC_PATH =./src
@@ -46,9 +46,8 @@ A61_OUTPUT =$(BIN_PATH)/aufgabe6.1
 
 aufgabe6.1: $(OBJECT) $(A61_OBJECT)
 	$(CXX) $(OBJECT) $(A61_OBJECT) $(LIB) $(LIB_PATH) -o $(A61_OUTPUT)
-	$(A61_OUTPUT)
 
-# aufgabe6.1
+# aufgabe6.2
 A62_SOURCE =\
 	$(SRC_PATH)/aufgabe6.2.cpp \
 	$(NULL)
@@ -59,7 +58,54 @@ A62_OUTPUT =$(BIN_PATH)/aufgabe6.2
 
 aufgabe6.2: $(OBJECT) $(A62_OBJECT)
 	$(CXX) $(OBJECT) $(A62_OBJECT) $(LIB) $(LIB_PATH) -o $(A62_OUTPUT)
-	$(A62_OUTPUT)
+
+# aufgabe6.4
+A64_SOURCE =\
+	$(SRC_PATH)/aufgabe6.4.cpp \
+	$(NULL)
+
+A64_OBJECT =$(A64_SOURCE:$(SRC_PATH)%.cpp=$(OBJ_PATH)%.o)
+
+A64_OUTPUT =$(BIN_PATH)/aufgabe6.4
+
+aufgabe6.4: $(OBJECT) $(A64_OBJECT)
+	$(CXX) $(OBJECT) $(A64_OBJECT) $(LIB) $(LIB_PATH) -o $(A64_OUTPUT)
+
+# aufgabe6.5
+A65_SOURCE =\
+	$(SRC_PATH)/aufgabe6.5.cpp \
+	$(NULL)
+
+A65_OBJECT =$(A65_SOURCE:$(SRC_PATH)%.cpp=$(OBJ_PATH)%.o)
+
+A65_OUTPUT =$(BIN_PATH)/aufgabe6.5
+
+aufgabe6.5: $(OBJECT) $(A65_OBJECT)
+	$(CXX) $(OBJECT) $(A65_OBJECT) $(LIB) $(LIB_PATH) -o $(A65_OUTPUT)
+
+# aufgabe6.6
+A66_SOURCE =\
+	$(SRC_PATH)/aufgabe6.6.cpp \
+	$(NULL)
+
+A66_OBJECT =$(A66_SOURCE:$(SRC_PATH)%.cpp=$(OBJ_PATH)%.o)
+
+A66_OUTPUT =$(BIN_PATH)/aufgabe6.6
+
+aufgabe6.6: $(OBJECT) $(A66_OBJECT)
+	$(CXX) $(OBJECT) $(A66_OBJECT) $(LIB) $(LIB_PATH) -o $(A66_OUTPUT)
+
+# aufgabe6.7
+A67_SOURCE =\
+	$(SRC_PATH)/aufgabe6.7.cpp \
+	$(NULL)
+
+A67_OBJECT =$(A67_SOURCE:$(SRC_PATH)%.cpp=$(OBJ_PATH)%.o)
+
+A67_OUTPUT =$(BIN_PATH)/aufgabe6.7
+
+aufgabe6.7: $(OBJECT) $(A67_OBJECT)
+	$(CXX) $(OBJECT) $(A67_OBJECT) $(LIB) $(LIB_PATH) -o $(A67_OUTPUT)
 
 # test
 TEST_SOURCE =\
@@ -88,12 +134,12 @@ test: $(OBJECT) $(TEST_OBJECT)
 	$(TEST_OUTPUT)
 
 # (clean and) build everything
-build: test main
-cleanbuild: realclean build
+all: aufgabe6.1 aufgabe6.2 aufgabe6.4 aufgabe6.5 aufgabe6.6 aufgabe6.7
+cleanbuild: realclean all
 
 # routines for building objects
-%.o: $(SRC_PATH)/%.cpp
-	$(CXX) $(CXX_FLAGS) $(INCLUDE) -c $< -o $(OBJ_PATH)/$@
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
+	$(CXX) $(CXX_FLAGS) $(INCLUDE) -c $< -o $@
 
 # clean routines
 .PHONY: clean

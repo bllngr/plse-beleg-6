@@ -31,6 +31,9 @@ public:
 	std::string const& name() const;
 	color const& Color() const;  // cannot be of the same name as the struct
 	
+	// setters
+	void name(std::string);
+
 	// misc member functions
 	virtual double volume() const = 0;
 	virtual double surface() const = 0;
@@ -39,6 +42,7 @@ public:
 	/* virtual */ void printOn(std::ostream& os) const;
 	void ref();
 	void unref();
+	int refCounter() const;
 
 private:
 	std::string name_;

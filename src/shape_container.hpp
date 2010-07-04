@@ -23,7 +23,7 @@ public:
 	shape_container(shape_container const&);
 	~shape_container();
 
-	shape_container& operator==(shape_container const& other);
+	shape_container& operator=(shape_container const&);
 	
 	shape_container clone_deep() const;
 	shape_container clone_shallow() const;

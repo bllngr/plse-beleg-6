@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
- * aufgabe6.2.cpp
+ * aufgabe6.6.cpp
  * Copyright (C) Julius Bullinger 2010 <julius.bullinger@uni-weimar.de>
  *
  *   This program is free software. It comes without any warranty, to the extent
@@ -11,36 +11,23 @@
  * 
  */
 
+#include <iostream>
 #include <UnitTest++.h>
-#include <cmath>
 #include "box.hpp"
-#include "sphere.hpp"
-#include "shape_container.hpp"
 
-using namespace std;
-
-TEST(check_volume)
+TEST(check_reference_counting)
 {
 	point3d origin(0,0,0);
 	box* box1Ptr = new box(origin, 1, 1, 1);
-	sphere* sphere1Ptr = new sphere(origin, 2);
-	shape_container cont;
-	cont.add(box1Ptr);
-	cont.add(sphere1Ptr);
-	CHECK_EQUAL((1 + 32/3. * M_PI), cont.volume());
+	CHECK_EQUAL(box1Ptr->refCounter(), 0);
+	box1Ptr->ref();
+	CHECK_EQUAL(box1Ptr->refCounter(), 1);
+	box1Ptr->unref();
+	CHECK_EQUAL(box1Ptr->refCounter(), 0); // why is this working?
+	// box1Ptr->unref();
 }
 
 int main()
 {
-	box* box1Ptr = new box(point3d(0, 0, 0), 1, 1, 1);
-	sphere* sphere1Ptr = new sphere(point3d(0, 0, 0), 2);
-
-	shape_container cont;
-	cont.add(box1Ptr);
-	cont.add(sphere1Ptr);
-
-	cont.print();
-	cout << endl;
-
 	return UnitTest::RunAllTests();
 }

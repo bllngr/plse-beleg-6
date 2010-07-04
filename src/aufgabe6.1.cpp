@@ -17,15 +17,26 @@
 
 using namespace std;
 
-SUITE(container_testsuite)
+TEST(check_constructor_and_add)
 {
-	TEST(check_constructor_and_add)
-	{
-		shape* shapePtr = new box();
-		shape_container cont;
-		cont.add(shapePtr);
-		CHECK_EQUAL(cont.size(),1);
-	}
+	shape* shapePtr = new box();
+	shape_container cont;
+	cont.add(shapePtr);
+	CHECK_EQUAL(cont.size(),1);
+}
+
+TEST(check_find_and_remove)
+{
+	shape* shapePtr = new box();
+	shape_container cont;
+	cont.add(shapePtr);
+	CHECK_EQUAL(cont.size(), 1);
+	cont.remove(shapePtr);
+	CHECK_EQUAL(cont.size(), 0);
+	cont.add(shapePtr);
+	CHECK_EQUAL(cont.size(), 1);
+	cont.remove(cont.find("box"));
+	CHECK_EQUAL(cont.size(), 0);
 }
 
 int main()

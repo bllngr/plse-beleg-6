@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <typeinfo>
+#include <cassert>
 #include "shape.hpp"
 
 using namespace std;
@@ -58,6 +59,12 @@ color const& shape::Color () const
 	return color_;
 }
 
+// setters
+void shape::name(string newName)
+{
+	name_ = newName;
+}
+
 // misc member functions
 /* virtual */ void shape::printOn(std::ostream& os) const
 {
@@ -67,11 +74,22 @@ color const& shape::Color () const
 void shape::ref()
 {
 	++refCounter_;
+	cout << "ref'd " << name_ << endl;
 }
 
 void shape::unref()
 {
 	--refCounter_;
+	cout << "unref'd " << name_ << endl;
+	if (refCounter_ <= 0)
+	{
+		delete this;	// seems evil to me
+	}
+}
+
+int shape::refCounter() const
+{
+	return  refCounter_;
 }
 
 // ostream operator (external definition)

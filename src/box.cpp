@@ -120,7 +120,9 @@ point3d box::corner() const
 
 /* virtual */ box* box::clone() const
 {
+	// cout << endl << "cloning " << name_ << endl;
 	box* cloned = new box(*this);
+	// (cloned->name_).append(" (clone)");
 	return cloned;
 }
 

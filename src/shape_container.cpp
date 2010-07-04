@@ -28,16 +28,18 @@ shape_container::shape_container():
 shapes_()
 {}
 
-shape_container::shape_container(shape_container const&):
-shapes_()
+shape_container::shape_container(shape_container const& other):
+shapes_(other.shapes_)
 {
-
+	for_each(shapes_.begin(), shapes_.end(), mem_fun(&shape::ref));
 }
 
 shape_container::~shape_container()
-{}
+{
+	for_each(shapes_.begin(), shapes_.end(), mem_fun(&shape::unref));
+}
 
-shape_container& shape_container::operator==(shape_container const& other)
+shape_container& shape_container::operator=(shape_container const& other)
 {
 	for_each(shapes_.begin(), shapes_.end(), mem_fun(&shape::unref));
 	shapes_ = other.shapes_;
@@ -54,7 +56,7 @@ shape_container shape_container::clone_deep() const
 	{
 		cloned.add((*it)->clone());
 	}
-
+	cout << "end cloning" << endl;
 	return cloned;
 }
 
